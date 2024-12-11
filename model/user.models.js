@@ -21,11 +21,11 @@ const userSchmema = mongoose.Schema ({
     },
     gender:{
         type:String,
-        enum:["male , female"],
+        enum:["male" , "female"],
         required:true
 
     },
-},{timestamps:true})
+},{timestamps:true});
 
 const User = mongoose.model('User', userSchmema);
 export default User;
