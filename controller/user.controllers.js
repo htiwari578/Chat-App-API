@@ -105,3 +105,18 @@ export const logout = async (req, res)=> {
         })
     }
 }
+
+export const getOtherUser =async(req,res)=>{
+    try {
+        const logedInUsrId = req.id;
+        const otherUsers = await User.find({_id:{$ne:logedInUsrId}}).select("-password");
+        return res.status(200).json(otherUsers);
+
+    } catch (error) {
+        console.log('error', error);
+        res.status(500).json({
+            message:"server error",
+            error:error.message
+        })
+    }
+}
