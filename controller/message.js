@@ -41,3 +41,20 @@ export const sendMessage = async (req,res)=>{
 }
 
 
+export const getMessage = async (req, res)=> {
+    try {
+        const receiverId = req.params.id;
+        const senderId = req.id;
+        const conversation = await Conversation.findOne({
+            participants:{$all : [senderId, receiverId]},
+        }).populate("message");
+        return res.status(200).json(conversation?.message);
+    } catch (error) {
+        console.log('error while getting message', error);
+        res.status(500).json({
+            message:"Server error while geting message",
+            error: error.message
+        })
+    }
+}
+
