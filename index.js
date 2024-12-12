@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import connectDB from "./utils/db.js";
+
 import userRoute from './routes/user.route.js'
+import messageRoute from './routes/message.route.js'
 
 
 
@@ -19,6 +21,7 @@ const PORT = process.env.PORT || 3000;
 
 // api
 app.use("/api/h4/user", userRoute);
+app.use("/api/h4/message", messageRoute);
 
 app.listen(PORT, () => {
     connectDB();

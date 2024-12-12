@@ -31,7 +31,7 @@ export const register = async (req, res) => {
             fullname,
             username,
             password: hashedPassword,
-            profilephoto,
+            // profilephoto,
             gender
         });
         return res.status(201).json({
